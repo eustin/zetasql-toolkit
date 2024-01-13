@@ -366,6 +366,8 @@ public class ColumnLineageExtractor {
       return extractColumnLevelLineage((ResolvedMergeStmt) statement);
     } else if (statement instanceof ResolvedCreateViewBase) {
       return extractColumnLevelLineage((ResolvedCreateViewBase) statement);
+    } else if (statement instanceof ResolvedQueryStmt) {
+      return extractColumnLevelLineage((ResolvedQueryStmt) statement, "some-project.some_dataset.some_table");
     }
 
     return ImmutableSet.of();
